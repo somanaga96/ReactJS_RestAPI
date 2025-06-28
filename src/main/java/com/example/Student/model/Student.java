@@ -1,9 +1,13 @@
 package com.example.Student.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 
 @Entity
+
 public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -11,6 +15,9 @@ public class Student {
     private String name;
     private int age;
     private String course;
+
+    private String username; // ✅ Required for login
+    private String password; // ✅ Must be encoded (bcrypt)
 
     public Long getId() {
         return id;
@@ -42,5 +49,21 @@ public class Student {
 
     public void setCourse(String course) {
         this.course = course;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
